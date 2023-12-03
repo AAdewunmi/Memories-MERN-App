@@ -12,9 +12,8 @@ const Form = () => {
         selectedFile: ''
     });
     const classes = useStyles();
-    const handleSubmit = () => {
-
-    };
+    const handleSubmit = () => {};
+    const clear = () => {};
     return (
       <Paper className={classes.paper}>
         <Form
