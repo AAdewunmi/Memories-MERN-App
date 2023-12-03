@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { TextField, Button, Typography, Paper } from "@material-ui/core";
+import TextField from '@material-ui/core/TextField';
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
 import FileBase from 'react-file-base64';
 import useStyles from "./styles.js";
 
@@ -11,12 +14,12 @@ const Form = () => {
         tags: '',
         selectedFile: ''
     });
-    const classes = useStyles();
     const handleSubmit = () => {};
     const clear = () => {};
+    const classes = useStyles();
     return (
       <Paper className={classes.paper}>
-        <Form
+        <form
           autoComplete="off"
           noValidate
           className={classes.form}
@@ -89,7 +92,7 @@ const Form = () => {
           >
             Clear
           </Button>
-        </Form>
+        </form>
       </Paper>
     );
 }
