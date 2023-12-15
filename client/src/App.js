@@ -8,11 +8,11 @@ import memories from "./images/memories.png";
 import useStyles from './styles.js';
 
 const App = () => {
-    const classes = useStyles();
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(getPosts());
     }, [dispatch]);
+    const classes = useStyles();
     return (
       <Container maxWidth="lg">
         <AppBar className={classes.appBar} position="static" color="inherit">

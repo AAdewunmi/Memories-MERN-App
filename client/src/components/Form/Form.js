@@ -8,21 +8,22 @@ import { useDispatch } from 'react-redux';
 import useStyles from "./styles.js";
 import { createPost } from "../../actions/posts.js";
 
-const Form = () => {
+const Form = () => { 
     const [postData, setPostData] = useState({
-        creator: '',
-        title: '',
-        message: '',
-        tags: '',
-        selectedFile: ''
+      creator: '',
+      title: '',
+      message: '',
+      tags: '',
+      selectedFile: ''
     });
     const dispatch = useDispatch();
-    const handleSubmit = (e) => {
+    const classes = useStyles();
+    const handleSubmit = async (e) => {
       e.preventDefault();
-      dispatch(createPost);
+      await dispatch(createPost(postData));
     };
     const clear = () => {};
-    const classes = useStyles();
+    
     return (
       <Paper className={classes.paper}>
         <form
