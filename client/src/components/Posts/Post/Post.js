@@ -24,15 +24,26 @@ const Post = ({ post }) => {
       </div>
       <div className={classes.overlay2}>
         <Button>
-          <Button
-            style={{ color: "white" }}
-            size="small"
-            onClick={() => {}}
-          >
+          <Button style={{ color: "white" }} size="small" onClick={() => {}}>
             <MoreHorizIcon fontSize="default" />
           </Button>
         </Button>
       </div>
+      <div className={classes.details}>
+        <Typography variant="body2" color="textSecondary" component="h2">
+          {post.tags.map((tag) => `#${tag} `)}
+        </Typography>
+      </div>
+      <CardContent>
+        <Typography
+          className={classes.title}
+          gutterBottom
+          variant="h5"
+          component="h2"
+        >
+          {post.message}
+        </Typography>
+      </CardContent>
     </Card>
   );
 };
