@@ -44,6 +44,22 @@ const Post = ({ post }) => {
           {post.message}
         </Typography>
       </CardContent>
+      <CardActions className={classes.cardActions}>
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => {}}
+        >
+          <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}{" "}
+        </Button>
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => {}}
+        >
+          <DeleteIcon fontSize="small" /> Delete
+        </Button>
+      </CardActions>
     </Card>
   );
 };
