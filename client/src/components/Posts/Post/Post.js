@@ -15,6 +15,7 @@ const Post = ({ post }) => {
         className={classes.media}
         image={post.selectedFile}
         title={post.title}
+        component='img'
       ></CardMedia>
       <div className={classes.overlay}>
         <Typography variant="h6">{post.creator}</Typography>
@@ -23,10 +24,8 @@ const Post = ({ post }) => {
         </Typography>
       </div>
       <div className={classes.overlay2}>
-        <Button>
-          <Button style={{ color: "white" }} size="small" onClick={() => {}}>
-            <MoreHorizIcon fontSize="default" />
-          </Button>
+        <Button style={{ color: "white" }} size="small" onClick={() => {}}>
+          <MoreHorizIcon fontSize="inherit" />
         </Button>
       </div>
       <div className={classes.details}>
@@ -45,18 +44,10 @@ const Post = ({ post }) => {
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => {}}
-        >
+        <Button size="small" color="primary" onClick={() => {}}>
           <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}{" "}
         </Button>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => {}}
-        >
+        <Button size="small" color="primary" onClick={() => {}}>
           <DeleteIcon fontSize="small" /> Delete
         </Button>
       </CardActions>
