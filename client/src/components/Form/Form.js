@@ -30,7 +30,14 @@ const Form = ({ currentId, setCurrentId }) => {
     }
   };
   const clear = () => {
-    
+    setCurrentId(0);
+    setPostData({
+      creator: "",
+      title: "",
+      message: "",
+      tags: "",
+      selectedFile: "",
+    });
   };
   const classes = useStyles();
   return (
