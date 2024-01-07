@@ -12,7 +12,7 @@ const App = () => {
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(getPosts());
-    }, [dispatch]);
+    }, [currentId, dispatch]);
     const classes = useStyles();
     return (
       <Container maxWidth="lg">
