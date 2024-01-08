@@ -47,19 +47,23 @@ const Post = ({ post, setCurrentId }) => {
         {post.title}
       </Typography>
       <CardContent>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="h2"
-        >
+        <Typography variant="body2" color="textSecondary" component="p">
           {post.message}
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Button size="small" color="primary" onClick={() => dispatch(likePost(post._id))}>
-          <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}{" "}
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => dispatch(likePost(post._id))}
+        >
+          <ThumbUpAltIcon fontSize="small" /> &nbsp; Like &nbsp; {post.likeCount}{" "}
         </Button>
-        <Button size="small" color="primary" onClick={() => dispatch(deletePost(post._id))}>
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => dispatch(deletePost(post._id))}
+        >
           <DeleteIcon fontSize="small" /> Delete
         </Button>
       </CardActions>
