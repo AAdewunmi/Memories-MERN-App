@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AppBar, Avatar, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core";
 import memories from "../../images/memories.png";
 import useStyles from "./styles";
 const Navbar = () => {
@@ -28,11 +28,15 @@ const Navbar = () => {
                     <Typography className={classes.userName} variant="h6">
                         {user.result.name}
                     </Typography>
-                    
+                    <Button variant="contained" className={classes.logout} color="secondary">
+                        Logout
+                    </Button>
                 </div>
             ) : (
-
-            )}
+                <Button component={Link} to="/auth" variant="contained" color="primary">
+                  Sign In
+                </Button>
+            )};
         </Toolbar>
       </AppBar>
     );
