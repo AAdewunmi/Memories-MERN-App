@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Container, Grow, Grid } from '@material-ui/core';
 import { getPosts } from './actions/posts'
+import { BrowserRouter, Swich, Route} from 'react-router-dom';
 import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';
 import useStyles from './styles';
