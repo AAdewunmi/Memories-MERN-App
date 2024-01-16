@@ -7,11 +7,15 @@ import Input from "./Input";
 const Auth = () => {
     const classes = makeStyles();
     const [showPassword, setShowPassword] = useState(false);
+    const [isSignUp, setIsSignUp] = useState(false);
     const handleShowPassword = () =>
       setShowPassword((prevShowPassword) => !prevShowPassword);
-    const isSignUp = false;
     const handleSubmit = () => {}
     const handleChange = () => {};
+    const switchMode = () => {
+        setIsSignUp((prevIsSignUp) => !prevIsSignUp);
+        handleShowPassword(false);
+    };
     return (
       <Container component="main" maxWidth="xs">
         <Paper className={classes.paper} elevation={3}>
@@ -71,6 +75,15 @@ const Auth = () => {
             >
               {isSignUp ? "Sign Up" : "Sign In"}
             </Button>
+            <Grid container justifyContent="flex-end">
+                <Grid item>
+                    <Button onClick={switchMode}>
+                        {
+                           isSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up" 
+                        }
+                    </Button>
+                </Grid>
+            </Grid>
           </form>
         </Paper>
       </Container>
