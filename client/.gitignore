@@ -24,6 +24,18 @@ chrome-user-data
 *.swp
 *.swo
 .env
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
 
 packages/react-devtools-core/dist
 packages/react-devtools-extensions/chrome/build
