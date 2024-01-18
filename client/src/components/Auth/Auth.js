@@ -7,6 +7,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import Icon from "./icon";
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
 
 const Auth = () => {
     const classes = makeStyles();
@@ -21,13 +22,14 @@ const Auth = () => {
         handleShowPassword(false);
     };
     const dispatch = useDispatch();
+    const history = useNavigate();
     const googleSuccess = async (res) => { 
       const result = res?.profileObj;
       const token = res?.tokenId;
 
       try {
         dispatch({ type: 'AUTH', data: { result, token } });
-        history.push("/");
+        history("/");
       } catch (error) {
         console.log(error);
       }
