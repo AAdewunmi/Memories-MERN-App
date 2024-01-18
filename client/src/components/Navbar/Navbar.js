@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core";
 import memories from "../../images/memories.png";
 import useStyles from "./styles";
+
 const Navbar = () => {
     const classes = useStyles();
     const user = null;

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Avatar, Button, Paper, Grid, Typography, Container, TextField } from '@material-ui/core';
+import { Avatar, Button, Paper, Grid, Typography, Container, Icon } from '@material-ui/core';
 import makeStyles from './styles';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Input from "./Input";
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleLogin, googleLogout } from "@react-oauth/google";
 
 const Auth = () => {
     const classes = makeStyles();
@@ -68,6 +69,22 @@ const Auth = () => {
                   />
                 )}
               </Grid>
+              <div>
+                <GoogleLogin
+                  clientId="566190068478-h5tjsscs7c827v1dtg37krtnp4i1tui1.apps.googleusercontent.com"
+                  render={(renderProps) => (
+                    <Button
+                      className={classes.googleButton}
+                      color="primary"
+                      fullWidth
+                      onClick={renderProps.onClick}
+                      disabled={renderProps.disabled}
+                      startIcon={<Icon />}
+                      variant="contained"
+                    > Google Sign In </Button>
+                  )}
+                />
+              </div>
               <Button
                 type="submit"
                 fullWidth
