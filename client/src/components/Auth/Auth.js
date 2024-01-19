@@ -108,7 +108,7 @@ const Auth = () => {
                     startIcon={<Icon />}
                     variant="contained"
                   >
-                    Google Sign In
+                    Sign in with Google 🚀
                   </Button>
                 )}
                 onSuccess={onSuccess}
