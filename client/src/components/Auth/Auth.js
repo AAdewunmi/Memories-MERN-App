@@ -8,14 +8,24 @@ import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import Icon from "./icon";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+const initialState = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+};
 
 const Auth = () => {
     const classes = makeStyles();
     const [showPassword, setShowPassword] = useState(false);
     const [isSignUp, setIsSignUp] = useState(false);
+    const [formData, setFormData] = useState(initialState);
     const handleShowPassword = () =>
       setShowPassword((prevShowPassword) => !prevShowPassword);
-    const handleSubmit = () => {}
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log(formData)}
     const handleChange = () => {};
     const switchMode = () => {
         setIsSignUp((prevIsSignUp) => !prevIsSignUp);
@@ -38,7 +48,7 @@ const Auth = () => {
       console.log("Google sign in failed! ... Try again later.");
     };
     return (
-      <GoogleOAuthProvider clientId="566190068478-h5tjsscs7c827v1dtg37krtnp4i1tui1.apps.googleusercontent.com">
+      <GoogleOAuthProvider clientId="GOOGLE ID">
         <Container component="main" maxWidth="xs">
           <Paper className={classes.paper} elevation={3}>
             <Avatar className={classes.avatar}>
