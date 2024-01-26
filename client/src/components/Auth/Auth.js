@@ -8,6 +8,7 @@ import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import Icon from "./icon";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { signIn, signUp } from '../../actions/auth';
 const initialState = {
   firstName: '',
   lastName: '',
@@ -25,7 +26,12 @@ const Auth = () => {
       setShowPassword((prevShowPassword) => !prevShowPassword);
     const handleSubmit = (e) => {
       e.preventDefault();
-      console.log(formData)}
+      if (isSignUp) {
+          dispatch(isSignUp(formData, history))
+      }else{
+          dispatch(signIn(formData, history))
+      }
+    }
     const handleChange = (e) => {
       setFormData({...formData, [e.target.name]: e.target.value});
     };
