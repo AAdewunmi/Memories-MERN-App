@@ -26,7 +26,9 @@ const Auth = () => {
     const handleSubmit = (e) => {
       e.preventDefault();
       console.log(formData)}
-    const handleChange = () => {};
+    const handleChange = (e) => {
+      setFormData({...formData, [e.target.name]: e.target.value});
+    };
     const switchMode = () => {
         setIsSignUp((prevIsSignUp) => !prevIsSignUp);
         handleShowPassword(false);
