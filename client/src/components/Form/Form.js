@@ -10,7 +10,6 @@ import useStyles from "./styles.js";
 
 const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
-    creator: "",
     title: "",
     message: "",
     tags: "",
@@ -21,25 +20,30 @@ const Form = ({ currentId, setCurrentId }) => {
   useEffect(() => {
     if (post) {setPostData(post)}
   }, [post]);
-  const handleSubmit =  (e) => {
-    e.preventDefault();
-    if (currentId) {
-      dispatch(updatePost(currentId, postData));
-    }else{
-      dispatch(createPost(postData));
-    }
-    clear();
-  };
   const clear = () => {
     setCurrentId(0);
     setPostData({
-      creator: "",
       title: "",
       message: "",
       tags: "",
       selectedFile: "",
     });
   };
+  const user = JSON.parse(localStorage.getItem('profile'));
+  const handleSubmit =  async(e) => {
+    e.preventDefault();
+    if (currentId === 0) {
+      dispatch(createPost({ ...postData, name: user?.result?.name}));
+      clear();
+    }else{
+      dispatch(
+        updatePost(currentId, { ...postData, name: user?.result?.name })
+      );
+      clear();
+    }
+  };
+  if (!user?.result?.name) {
+  }
   const classes = useStyles();
   return (
     <Paper className={classes.paper}>
@@ -50,16 +54,6 @@ const Form = ({ currentId, setCurrentId }) => {
         onSubmit={handleSubmit}
       >
         <Typography variant="h6"> {currentId ? 'Editing' : 'Creating'} a Memory</Typography>
-        <TextField
-          name="creator"
-          variant="outlined"
-          label="Creator"
-          fullWidth
-          value={postData.creator}
-          onChange={(e) =>
-            setPostData({ ...postData, creator: e.target.value })
-          }
-        />
         <TextField
           name="title"
           variant="outlined"
