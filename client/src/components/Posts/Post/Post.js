@@ -89,10 +89,10 @@ const Post = ({ post, setCurrentId }) => {
         <Button
           size="small"
           color="primary"
+          disabled={!user?.result}
           onClick={() => dispatch(likePost(post._id))}
         >
-          <ThumbUpAltIcon fontSize="small" /> &nbsp; Like &nbsp;{" "}
-          {post.likeCount}{" "}
+          <Likes />
         </Button>
         <Button
           size="small"
