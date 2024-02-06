@@ -1,5 +1,6 @@
 import React from "react";
-import {Card, CardActions, CardContent, CardMedia, Button, Typography} from '@material-ui/core';
+import {Card, CardActions, CardContent, Button, Typography} from '@material-ui/core';
+import CardMedia from "@material-ui/core/CardMedia";
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
@@ -14,6 +15,7 @@ const Post = ({ post, setCurrentId }) => {
   return (
     <Card className={classes.card}>
       <CardMedia
+        component='div'
         className={classes.media}
         image={post.selectedFile}
         title={post.title}
@@ -57,7 +59,8 @@ const Post = ({ post, setCurrentId }) => {
           color="primary"
           onClick={() => dispatch(likePost(post._id))}
         >
-          <ThumbUpAltIcon fontSize="small" /> &nbsp; Like &nbsp; {post.likeCount}{" "}
+          <ThumbUpAltIcon fontSize="small" /> &nbsp; Like &nbsp;{" "}
+          {post.likeCount}{" "}
         </Button>
         <Button
           size="small"

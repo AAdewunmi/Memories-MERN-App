@@ -30,15 +30,13 @@ const Form = ({ currentId, setCurrentId }) => {
     });
   };
   const user = JSON.parse(localStorage.getItem('profile'));
-  const handleSubmit =  async(e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     if (currentId === 0) {
       dispatch(createPost({ ...postData, name: user?.result?.name}));
       clear();
     }else{
-      dispatch(
-        updatePost(currentId, { ...postData, name: user?.result?.name })
-      );
+      dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
       clear();
     }
   };
