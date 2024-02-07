@@ -4,6 +4,7 @@ import { AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core";
 import memories from "../../images/memories.png";
 import useStyles from "./styles";
 import { useDispatch } from "react-redux";
+import { jwtDecode } from 'jwt-decode';
 
 const Navbar = () => {
     const classes = useStyles();
@@ -12,17 +13,24 @@ const Navbar = () => {
      );
      console.log(user);
      const location = useLocation();
-     useEffect(() => {
-       const token = user?.token;
-       setUser(JSON.parse(localStorage.getItem('profile')));
-     }, [location]);
      const dispatch = useDispatch();
      const history = useNavigate();
      const logout = () => {
-        dispatch({ type: 'LOGOUT' });
-        history("/");
-        setUser(null);
-     }
+       dispatch({ type: "LOGOUT" });
+       history("/");
+       setUser(null);
+     };
+     useEffect(() => {
+       const token = user?.token;
+       if (token) { 
+          const decodedToken = jwtDecode(token);
+          if (decodedToken.exp * 1000 < new Date().getTime()) {
+            logout();
+          }
+       }
+       setUser(JSON.parse(localStorage.getItem('profile')));
+     }, [location]);
+     
     return (
       <AppBar className={classes.appBar} position="static" color="inherit">
         <div className={classes.brandContainer}>
