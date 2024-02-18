@@ -6,6 +6,7 @@
   "dependencies": {
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
+    "@material-ui/lab": "^4.0.0-alpha.61",
     "@react-oauth/google": "^0.12.1",
     "@reduxjs/toolkit": "^2.0.1",
     "@testing-library/jest-dom": "^5.17.0",
@@ -15,6 +16,7 @@
     "dotenv": "^16.3.1",
     "install": "^0.13.0",
     "jwt-decode": "^4.0.0",
+    "material-ui-chip-input": "^1.1.0",
     "moment": "^2.29.4",
     "npm": "^10.2.5",
     "react": "^16.14.0",
