@@ -5,7 +5,7 @@ import { Container, Grow, Grid, Paper, AppBar, TextField, Button } from "@materi
 import Posts from "../Posts/Posts";
 import Form from "../Form/Form";
 import Paginate from "../Pagination";
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import ChipInput from 'material-ui-chip-input';
 import useStyles from './styles';
 
@@ -17,7 +17,7 @@ const Home = () => {
      const [currentId, setCurrentId] = useState(0);
      const dispatch = useDispatch();
      const query = useQuery();
-     const history = useHistory();
+     const history = useNavigate();
      const page = query.get('page') || 1;
      const searchQuery = query.get('searchQuery');
      const classes = useStyles();
