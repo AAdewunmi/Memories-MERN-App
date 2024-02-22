@@ -7,6 +7,7 @@ import Form from "../Form/Form";
 import Paginate from "../Pagination";
 import { useHistory, useLocation } from 'react-router-dom';
 import ChipInput from 'material-ui-chip-input';
+import useStyles from './styles';
 
 function useQuery(){
   return new URLSearchParams(useLocation().search);
@@ -19,6 +20,7 @@ const Home = () => {
      const history = useHistory();
      const page = query.get('page') || 1;
      const searchQuery = query.get('searchQuery');
+     const classes = useStyles();
      useEffect(() => {
        dispatch(getPosts());
      }, [currentId, dispatch]);
@@ -40,7 +42,9 @@ const Home = () => {
                 className={classes.appBarSearch}
                 position="static"
                 color="inherit"
-              ></AppBar>
+              >
+                <TextField name="search" variant="outlined" label="Search Memories" fullWidth value="TEST" onChange={() => {}}/>
+              </AppBar>
               <Form currentId={currentId} setCurrentId={setCurrentId} />
               <Paper elevation={6}>
                 <Paginate />
