@@ -58,7 +58,8 @@ const Home = () => {
                 variant="outlined" 
                 label="Search Memories" 
                 onKeyPress={handleKeyPress}
-                fullWidth value="search" 
+                fullWidth 
+                value={search}
                 onChange={(e) => setSearch(e.target.value)}/>
                 <ChipInput 
                   style={{ margin: '10px 0'}}
@@ -68,6 +69,7 @@ const Home = () => {
                   label="Search Tags"
                   variant="outlined"
                 />
+                <Button onClick={searchPost} className={classes.searchButton} color="primary">Search</Button>
               </AppBar>
               <Form currentId={currentId} setCurrentId={setCurrentId} />
               <Paper elevation={6}>
