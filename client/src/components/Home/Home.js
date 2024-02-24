@@ -22,6 +22,7 @@ const Home = () => {
      const searchQuery = query.get('searchQuery');
      const classes = useStyles();
      const [search, setSearch] = useState('');
+     const [tags, setTags] = useState([]);
      useEffect(() => {
        dispatch(getPosts());
      }, [currentId, dispatch]);
@@ -56,6 +57,14 @@ const Home = () => {
                 onKeyPress={handleKeyPress}
                 fullWidth value="search" 
                 onChange={(e) => setSearch(e.target.value)}/>
+                <ChipInput 
+                  style={{ margin: '10px 0'}}
+                  value={tags}
+                  onAdd={handleAdd}
+                  onDelete={handleDelete}
+                  label="Search Tags"
+                  variant="outlined"
+                />
               </AppBar>
               <Form currentId={currentId} setCurrentId={setCurrentId} />
               <Paper elevation={6}>
