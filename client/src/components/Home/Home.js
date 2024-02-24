@@ -21,9 +21,15 @@ const Home = () => {
      const page = query.get('page') || 1;
      const searchQuery = query.get('searchQuery');
      const classes = useStyles();
+     const [search, setSearch] = useState('');
      useEffect(() => {
        dispatch(getPosts());
      }, [currentId, dispatch]);
+     const handleKeyPress = (e) => {
+        if (e.keyCode === 13) {
+          // search post
+        }
+     }
     return (
       <Grow in>
         <Container maxWidth="xl">
@@ -43,7 +49,13 @@ const Home = () => {
                 position="static"
                 color="inherit"
               >
-                <TextField name="search" variant="outlined" label="Search Memories" fullWidth value="TEST" onChange={() => {}}/>
+                <TextField 
+                name="search" 
+                variant="outlined" 
+                label="Search Memories" 
+                onKeyPress={handleKeyPress}
+                fullWidth value="search" 
+                onChange={(e) => setSearch(e.target.value)}/>
               </AppBar>
               <Form currentId={currentId} setCurrentId={setCurrentId} />
               <Paper elevation={6}>
