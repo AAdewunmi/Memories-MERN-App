@@ -31,6 +31,8 @@ const Home = () => {
           // search post
         }
      }
+     const handleAdd = (tag) => setTags([...tag, tag]);
+     
     return (
       <Grow in>
         <Container maxWidth="xl">
