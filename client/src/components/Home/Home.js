@@ -32,7 +32,7 @@ const Home = () => {
             search, tags: tags.join(',')
           }));
         }else {
-          history.push('/');
+          history('/');
         }
      }
      const handleKeyPress = (e) => {
