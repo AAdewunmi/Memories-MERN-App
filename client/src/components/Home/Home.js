@@ -60,23 +60,31 @@ const Home = () => {
                 position="static"
                 color="inherit"
               >
-                <TextField 
-                name="search" 
-                variant="outlined" 
-                label="Search Memories" 
-                onKeyPress={handleKeyPress}
-                fullWidth 
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}/>
-                <ChipInput 
-                  style={{ margin: '10px 0'}}
+                <TextField
+                  name="search"
+                  variant="outlined"
+                  label="Search Memories"
+                  onKeyPress={handleKeyPress}
+                  fullWidth
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+                <ChipInput
+                  style={{ margin: "10px 0" }}
                   value={tags}
                   onAdd={handleAdd}
                   onDelete={handleDelete}
                   label="Search Tags"
                   variant="outlined"
                 />
-                <Button onClick={searchPost} className={classes.searchButton} color="primary" variant="contained">Search</Button>
+                <Button
+                  onClick={searchPost}
+                  className={classes.searchButton}
+                  color="primary"
+                  variant="contained"
+                >
+                  Search
+                </Button>
               </AppBar>
               <Form currentId={currentId} setCurrentId={setCurrentId} />
               <Paper elevation={6}>
