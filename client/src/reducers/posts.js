@@ -2,9 +2,10 @@ import { CREATE, UPDATE, DELETE, FETCH_ALL, FETCH_BY_SEARCH, START_LOADING, END_
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = [], action) => {
     switch (action.type) {
-      case START_LOADING: 
-        return {...state, isLoading: true};
-      
+      case START_LOADING:
+        return { ...state, isLoading: true };
+      case END_LOADING:
+        return { ...state, isLoading: false };
       case FETCH_ALL:
         return {
           ...state,
@@ -13,7 +14,7 @@ export default (state = [], action) => {
           numberOfPages: action.payload.numberOfPages,
         };
       case FETCH_BY_SEARCH:
-        return {...state, posts: action.payload};
+        return { ...state, posts: action.payload };
       case CREATE:
         return [...state, action.payload];
       case UPDATE:
