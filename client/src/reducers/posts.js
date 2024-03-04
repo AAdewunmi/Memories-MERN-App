@@ -1,7 +1,10 @@
-import { CREATE, UPDATE, DELETE, FETCH_ALL, FETCH_BY_SEARCH } from "../constants/actionTypes";
+import { CREATE, UPDATE, DELETE, FETCH_ALL, FETCH_BY_SEARCH, START_LOADING, END_LOADING } from "../constants/actionTypes";
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = [], action) => {
     switch (action.type) {
+      case START_LOADING: 
+        return {...state, isLoading: true};
+      
       case FETCH_ALL:
         return {
           ...state,
