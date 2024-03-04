@@ -1,10 +1,12 @@
-import { CREATE, UPDATE, DELETE, FETCH_ALL, FETCH_BY_SEARCH} from '../constants/actionTypes';
+import { CREATE, UPDATE, DELETE, FETCH_ALL, FETCH_BY_SEARCH, START_LOADING, END_LOADING} from '../constants/actionTypes';
 import * as api from '../api';
 
 export const getPosts = (page) => async (dispatch) => {
   try {
+    dispatch({ type: START_LOADING});
     const { data } = await api.fetchPosts(page);
     dispatch({ type: FETCH_ALL, payload: data });
+    dispatch({ type: END_LOADING });
   } catch (error) {
     console.log("Get Post Error: " + error);
   }
