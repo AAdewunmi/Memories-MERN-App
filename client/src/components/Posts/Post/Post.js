@@ -9,10 +9,12 @@ import moment from 'moment';
 import useStyles from "./styles";
 import { useDispatch } from 'react-redux';
 import { deletePost, likePost } from '../../../actions/posts';
+import { useNavigate } from 'react-router-dom';
 
 const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("profile"));
   const Likes = () => {
     if (post.likes.length > 0) {
@@ -41,6 +43,7 @@ const Post = ({ post, setCurrentId }) => {
       </>
     );
   };
+  const openPost = () => navigate(`/posts/${post._id}`);
   return (
     <Card className={classes.card} raised elevation={6}>
       <ButtonBase className={classes.cardActions} onClick={openPost}>
