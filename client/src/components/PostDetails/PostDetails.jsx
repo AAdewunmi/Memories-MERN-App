@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { useParams, useNavigate } from 'react-router-dom';
 import useStyles from './styles';
+import { getPost, getPostBySearch} from '../../actions/posts'
 
 const PostDetails = () => {
   const { post, posts, isLoading } = useSelector((state) => state.posts);
@@ -11,6 +12,9 @@ const PostDetails = () => {
   const navigate = useNavigate();
   const classes = useStyles();
   const { id } = useParams();
+  useEffect(() => {
+    dispatch(getPost(id));
+  }, [dispatch, id]);
 
   return (
     <Paper style={{ padding: '20px', borderRadius: '15px' }} elevation={6}>
