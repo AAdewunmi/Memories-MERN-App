@@ -6,8 +6,14 @@ import { useParams, useNavigate } from 'react-router-dom';
 import useStyles from './styles';
 
 const PostDetails = () => {
-  console.log("POST DETAILS");
+  const { post, posts, isLoading } = useSelector((state) => state.posts);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const classes = useStyles();
+  const { id } = useParams();
+
   return (
+    // jsx layout of post 
     <div>POST DETAILS</div>
   );
 }
