@@ -15,8 +15,6 @@ export default (state = { isLoading: true, posts: [] }, action) => {
         };
       case FETCH_BY_SEARCH:
         return { ...state, posts: action.payload };
-      case FETCH_POST:
-        return { ...state, post: action.payload };
       case LIKE:
         return {
           ...state,
@@ -38,6 +36,8 @@ export default (state = { isLoading: true, posts: [] }, action) => {
           ...state,
           posts: state.posts.filter((post) => post._id !== action.payload),
         };
+      case FETCH_POST:
+        return { ...state, post: action.payload };
       default:
         return state;
     }
