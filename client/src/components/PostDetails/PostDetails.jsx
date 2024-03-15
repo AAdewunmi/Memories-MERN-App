@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { useParams, useNavigate } from 'react-router-dom';
 import useStyles from './styles';
-import { getPost, getPostBySearch} from '../../actions/posts';
+import { getPost, getPostsBySearch} from '../../actions/posts';
 
 const PostDetails = () => {
   const { post, posts, isLoading } = useSelector((state) => state.posts);
@@ -16,6 +16,14 @@ const PostDetails = () => {
   useEffect(() => {
     dispatch(getPost(id));
   }, [id]);
+
+  useEffect(() => {
+    if (post) {
+        dispatch(getPostsBySearch({
+          search: 'none', tags: post?.tags.join(',')
+        }))
+    }
+  }, [post]);
 
   if (!post) return null;
 
