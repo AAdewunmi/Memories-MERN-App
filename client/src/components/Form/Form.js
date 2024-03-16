@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import FileBase from 'react-file-base64';
 import useStyles from "./styles.js";
+import { useNavigate } from 'react-router-dom';
 
 const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
@@ -15,7 +16,7 @@ const Form = ({ currentId, setCurrentId }) => {
     tags: "",
     selectedFile: "",
   });
-  const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
+  const post = useSelector((state) => currentId ? state.posts.posts.find((p) => p._id === currentId) : null);
   const dispatch = useDispatch();
   useEffect(() => {
     if (post) {setPostData(post)}
@@ -30,10 +31,11 @@ const Form = ({ currentId, setCurrentId }) => {
     });
   };
   const user = JSON.parse(localStorage.getItem('profile'));
+  const navigate = useNavigate();
   const handleSubmit = async(e) => {
     e.preventDefault();
     if (currentId === 0) {
-      dispatch(createPost({ ...postData, name: user?.result?.name}));
+      dispatch(createPost({ ...postData, name: user?.result?.name}, navigate));
       clear();
     }else{
       dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
