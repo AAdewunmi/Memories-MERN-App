@@ -1,4 +1,4 @@
-import { CREATE, UPDATE, DELETE, FETCH_POST, FETCH_ALL, FETCH_BY_SEARCH, LIKE, START_LOADING, END_LOADING } from "../constants/actionTypes";
+import { CREATE, UPDATE, DELETE, FETCH_POST, FETCH_ALL, FETCH_BY_SEARCH, LIKE, START_LOADING, END_LOADING, COMMENT } from "../constants/actionTypes";
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = { isLoading: true, posts: [] }, action) => {
     switch (action.type) {
@@ -21,6 +21,16 @@ export default (state = { isLoading: true, posts: [] }, action) => {
           posts: state.posts.map((post) =>
             post._id === action.payload._id ? action.payload : post
           ),
+        };
+      case COMMENT:
+        return {
+            ...state,
+            posts: state.posts.map((post) => {
+              if (post._id === action.payload._id) {
+                return action.payload;
+              }
+              return post;
+            }),
         };
       case CREATE:
         return { ...state, posts: [...state.posts, action.payload] };
