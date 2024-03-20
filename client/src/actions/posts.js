@@ -7,6 +7,7 @@ import {
   FETCH_BY_SEARCH,
   START_LOADING,
   END_LOADING,
+  COMMENT,
 } from "../constants/actionTypes";
 import * as api from '../api';
 
