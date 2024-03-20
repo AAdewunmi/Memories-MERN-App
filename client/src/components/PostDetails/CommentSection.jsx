@@ -8,7 +8,7 @@ const CommentSection = ({ post }) => {
     const classes = useStyles();
     const [comments, setComments] = useState([1,2,3,4]);
     const [comment, setComment] = useState('');
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem('profile'));
     const dispatch = useDispatch();
     const handleComment = async () => {
       const finalComment = `${user.result.name}: ${comment}`;
@@ -18,7 +18,7 @@ const CommentSection = ({ post }) => {
       <div>
         <div className={classes.commentsOuterContainer}>
           <div className={classes.commentsInnerContainer}>
-            <Typography gutterBottom variant="h6">
+            <Typography gutterBottom variant="h5">
               Comments
             </Typography>
             {comments.map((c, i) => (
@@ -27,30 +27,32 @@ const CommentSection = ({ post }) => {
               </Typography>
             ))}
           </div>
-          <div style={{ width: "70%" }}>
-            <Typography gutterBottom variant="h6">
-              Write a Comment
-            </Typography>
-            <TextField
-              fullWidth
-              rows={4}
-              variant="outlined"
-              label="Comment"
-              multiline
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            />
-            <Button
-              style={{ marginTop: "10px" }}
-              fullWidth
-              disabled={!comment.length}
-              color="primary"
-              variant="contained"
-              onClick={handleComment}
-            >
-              Comment
-            </Button>
-          </div>
+          {user?.result?.name && (
+            <div style={{ width: "70%" }}>
+              <Typography gutterBottom variant="h6">
+                Write a Comment
+              </Typography>
+              <TextField
+                fullWidth
+                rows={4}
+                variant="outlined"
+                label="Comment"
+                multiline
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+              />
+              <Button
+                style={{ marginTop: "10px" }}
+                fullWidth
+                disabled={!comment.length}
+                color="primary"
+                variant="contained"
+                onClick={handleComment}
+              >
+                Comment
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     );
