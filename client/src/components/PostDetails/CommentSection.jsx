@@ -12,7 +12,9 @@ const CommentSection = ({ post }) => {
     const dispatch = useDispatch();
     const handleComment = async () => {
       const finalComment = `${user.result.name}: ${comment}`;
-      dispatch(commentPost(finalComment, post._id));
+      const newComments = await dispatch(commentPost(finalComment, post._id));
+      setComments(newComments);
+      setComment('');
     };
     return (
       <div>
