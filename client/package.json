@@ -21,7 +21,7 @@
     "jwt-decode": "^4.0.0",
     "material-ui-chip-input": "^1.1.0",
     "moment": "^2.29.4",
-    "npm": "^10.5.2",
+    "npm": "^11.7.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-file-base64": "^1.0.3",
